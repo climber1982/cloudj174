@@ -4,7 +4,10 @@
     <groupId>lovo</groupId>
     <artifactId>cloudj174</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
+    <modules>
+        <module>registerS</module>
+    </modules>
+
     <name>cloudj174</name>
     <!-- <packaging>jar</packaging> -->
     <packaging>pom</packaging>
