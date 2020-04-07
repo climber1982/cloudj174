@@ -35,4 +35,19 @@ public class InfoController {
         }
         return  infoEntity;
     }
+
+    @RequestMapping(value = "infoEntityJson/{tag}",produces = "application/json;charset=utf-8")
+    public InfoEntity infoEntityJson(@PathVariable("tag") int tag){
+        InfoEntity infoEntity=new InfoEntity();
+        switch (tag){
+            case 1:
+                infoEntity.setInfo("hello cloud-1");
+                break;
+            case 2:
+                infoEntity.setInfo("hello cloud-2");
+                break;
+
+        }
+        return  infoEntity;
+    }
 }

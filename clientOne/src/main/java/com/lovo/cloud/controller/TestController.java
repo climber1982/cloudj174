@@ -31,4 +31,14 @@ public class TestController {
         //获得内容
         return infoEntity.getInfo();
     }
+    @RequestMapping("getInfo3")
+    public  String getInfo3(int tag){
+        String url="http://clienttwo/infoEntityJson/"+tag;
+        //远程调用
+        ResponseEntity responseEntity=
+                restTemplate.getForEntity(url, String.class);
+     return responseEntity.getBody().toString();
+
+    }
+
 }
