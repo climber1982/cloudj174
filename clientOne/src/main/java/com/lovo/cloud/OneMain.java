@@ -10,4 +10,5 @@ public class OneMain {
     public static void main(String[] args) {
         SpringApplication.run(OneMain.class);
     }
+    
 }
