@@ -1,5 +1,6 @@
 package com.lovo.cloud.controller;
 
+import com.lovo.cloud.entity.InfoEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,5 +19,20 @@ public class InfoController {
                 default:
                     return "eror";
         }
+    }
+
+    @RequestMapping("infoEntity/{tag}")
+    public InfoEntity infoEntity(@PathVariable("tag") int tag){
+        InfoEntity infoEntity=new InfoEntity();
+        switch (tag){
+            case 1:
+                infoEntity.setInfo("hello cloud-1");
+                break;
+            case 2:
+                infoEntity.setInfo("hello cloud-2");
+                break;
+
+        }
+        return  infoEntity;
     }
 }
