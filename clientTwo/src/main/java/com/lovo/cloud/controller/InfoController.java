@@ -1,10 +1,10 @@
 package com.lovo.cloud.controller;
 
 import com.lovo.cloud.entity.InfoEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController  //所有方法不做视图渲染，只返回数据
 public class InfoController {
@@ -36,10 +36,33 @@ public class InfoController {
         return  infoEntity;
     }
 
-    @RequestMapping(value = "infoEntityJson/{tag}",produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "infoEntityJson/{tag}"
+            ,produces = "application/json;charset=utf-8")
     public InfoEntity infoEntityJson(@PathVariable("tag") int tag){
         InfoEntity infoEntity=new InfoEntity();
         switch (tag){
+            case 1:
+                infoEntity.setInfo("hello cloud-1");
+                break;
+            case 2:
+                infoEntity.setInfo("hello cloud-2");
+                break;
+
+        }
+        return  infoEntity;
+    }
+
+
+    @RequestMapping("infoEntityPost")
+    public InfoEntity infoEntityPost(@RequestBody InfoEntity infoEntity){
+        infoEntity.setInfo("我是后台服务器...");
+        return  infoEntity;
+    }
+
+    @RequestMapping("infoEntityPost2")
+    public InfoEntity infoEntityPost(@RequestBody Map<String,Integer> map){
+        InfoEntity infoEntity=new InfoEntity();
+        switch (map.get("tag")){
             case 1:
                 infoEntity.setInfo("hello cloud-1");
                 break;

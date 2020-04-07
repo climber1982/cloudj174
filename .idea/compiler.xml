@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="clientTwo" />
+        <module name="clientTwo2" />
         <module name="clientOne" />
         <module name="registerS" />
       </profile>
@@ -16,6 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="clientOne" options="-parameters" />
       <module name="clientTwo" options="-parameters" />
+      <module name="clientTwo2" options="-parameters" />
       <module name="registerS" options="-parameters" />
     </option>
   </component>

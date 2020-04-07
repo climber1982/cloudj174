@@ -8,6 +8,7 @@
         <module>registerS</module>
         <module>clientOne</module>
         <module>clientTwo</module>
+        <module>clientTwo2</module>
     </modules>
 
     <name>cloudj174</name>
@@ -110,7 +111,12 @@
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
             <version>2.1.4.RELEASE</version>
         </dependency>
-
+        <!--数据调用-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>2.1.4.RELEASE</version>
+        </dependency>
         <!--thymeleaf模板jar，是很不错的html数据传递取值，类似jsp的jstl
         <dependency>
             <groupId>org.springframework.boot</groupId>
