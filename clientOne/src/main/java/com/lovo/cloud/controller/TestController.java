@@ -1,6 +1,7 @@
 package com.lovo.cloud.controller;
 
 import com.lovo.cloud.entity.InfoEntity;
+import com.lovo.cloud.service.api.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -20,14 +21,18 @@ public class TestController {
     @Autowired
     private RestTemplate restTemplate;
 
+    //注入本地远程调用接口
+    @Autowired
+    private InfoService infoService;
+
     @RequestMapping("getInfo")
     public  String getInfo(int tag){
         String url="http://clienttwo/infoString/"+tag;
-       //远程调用
+        //远程调用
         ResponseEntity responseEntity=
                 restTemplate.getForEntity(url,String.class);
-         //获得内容
-     return    responseEntity.getBody().toString();
+        //获得内容
+        return    responseEntity.getBody().toString();
     }
     @RequestMapping("getInfo2")
     public  String getInfo2(int tag){
@@ -45,7 +50,7 @@ public class TestController {
         //远程调用
         ResponseEntity responseEntity=
                 restTemplate.getForEntity(url, String.class);
-     return responseEntity.getBody().toString();
+        return responseEntity.getBody().toString();
 
     }
 
@@ -56,8 +61,8 @@ public class TestController {
         infoEntity.setInfo("我是前端");
         //url-请求的地址，tag请求的参数，InfoEntity.class返回的类型
         ResponseEntity responseEntity=
-        restTemplate.postForEntity(url,infoEntity,InfoEntity.class);
-         infoEntity=(InfoEntity)responseEntity.getBody();
+                restTemplate.postForEntity(url,infoEntity,InfoEntity.class);
+        infoEntity=(InfoEntity)responseEntity.getBody();
         return infoEntity.getInfo();
 
     }
@@ -68,9 +73,14 @@ public class TestController {
         Map<String,Integer> map=new HashMap<>();
         map.put("tag",tag);
         ResponseEntity responseEntity=
-       restTemplate.postForEntity(url,map,InfoEntity.class);
-       return ((InfoEntity)responseEntity.getBody()).getInfo();
+                restTemplate.postForEntity(url,map,InfoEntity.class);
+        return ((InfoEntity)responseEntity.getBody()).getInfo();
 
+    }
+    @RequestMapping("getFeignString")
+    public String getFeignString(int tag){
+        String str= infoService.infoString(tag);
+        return str;
     }
 
 }

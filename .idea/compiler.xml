@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="clientTwo" />
         <module name="clientTwo2" />
+        <module name="clientTwo" />
         <module name="clientOne" />
         <module name="registerS" />
       </profile>
