@@ -82,5 +82,15 @@ public class TestController {
         String str= infoService.infoString(tag);
         return str;
     }
-
+    @RequestMapping("infoEntityPost")
+    public String infoEntityPost(){
+         InfoEntity infoEntity=new InfoEntity();
+         infoEntity.setInfo("赵云");
+        String str= infoService.infoEntityPost(infoEntity).getInfo();
+        return str;
+    }
+@RequestMapping("infoEntityJson")
+    public String infoEntityJson(int tag){
+        return infoService.infoEntityJson(tag);
+    }
 }
