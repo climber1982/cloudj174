@@ -9,6 +9,7 @@
         <module>clientOne</module>
         <module>clientTwo</module>
         <module>clientTwo2</module>
+        <module>configService</module>
     </modules>
 
     <name>cloudj174</name>
@@ -99,12 +100,7 @@
             <artifactId>spring-cloud-starter-config</artifactId>
             <version>2.1.4.RELEASE</version>
         </dependency>
-        <!--配置-服务器 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
-            <version>2.1.4.RELEASE</version>
-        </dependency>
+
         <!--熔断-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

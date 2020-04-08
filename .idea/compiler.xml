@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="clientTwo2" />
         <module name="clientTwo" />
+        <module name="configService" />
         <module name="clientOne" />
         <module name="registerS" />
       </profile>
@@ -18,6 +19,7 @@
       <module name="clientOne" options="-parameters" />
       <module name="clientTwo" options="-parameters" />
       <module name="clientTwo2" options="-parameters" />
+      <module name="configService" options="-parameters" />
       <module name="registerS" options="-parameters" />
     </option>
   </component>

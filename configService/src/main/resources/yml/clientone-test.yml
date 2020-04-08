@@ -1,0 +1,10 @@
+#服务器的端口号
+server:
+  port: 8001
+
+eureka:
+  instance:
+    hostname: 127.0.0.1  #服务器的IP地址
+  client:
+    serviceUrl:    #注册服务器的地址
+      defaultZone: http://127.0.0.1:8000/eureka/
