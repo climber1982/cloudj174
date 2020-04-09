@@ -11,5 +11,11 @@
 
     <artifactId>clientOne</artifactId>
    <packaging>jar</packaging>
-
+  <dependencies>
+      <dependency>
+          <groupId>lovo</groupId>
+          <artifactId>basicProject</artifactId>
+          <version>1.0-SNAPSHOT</version>
+      </dependency>
+  </dependencies>
 </project>

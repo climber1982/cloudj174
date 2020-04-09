@@ -10,6 +10,7 @@
         <module>clientTwo</module>
         <module>clientTwo2</module>
         <module>configService</module>
+        <module>basicProject</module>
     </modules>
 
     <name>cloudj174</name>

@@ -2,6 +2,7 @@ package com.lovo.cloud.controller;
 
 import com.lovo.cloud.entity.InfoEntity;
 import com.lovo.cloud.service.api.InfoService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -24,8 +25,15 @@ public class TestController {
     //注入本地远程调用接口
     @Autowired
     private InfoService infoService;
-
+   @RequestMapping("test")
+    public  String test(){
+        com.lovo.basic.entity.InfoEntity info=new
+                com.lovo.basic.entity.InfoEntity();
+        info.setInfo("hello info");
+        return info.getInfo();
+    }
     @RequestMapping("getInfo")
+    @HystrixCommand(fallbackMethod = "getInfob")
     public  String getInfo(int tag){
         String url="http://clienttwo/infoString/"+tag;
         //远程调用
@@ -34,6 +42,11 @@ public class TestController {
         //获得内容
         return    responseEntity.getBody().toString();
     }
+
+    public String getInfob(int tag){
+        return "系统暂时无法访问"+tag;
+    }
+
     @RequestMapping("getInfo2")
     public  String getInfo2(int tag){
         String url="http://clienttwo/infoEntity/"+tag;
@@ -77,6 +90,7 @@ public class TestController {
         return ((InfoEntity)responseEntity.getBody()).getInfo();
 
     }
+
     @RequestMapping("getFeignString")
     public String getFeignString(int tag){
         String str= infoService.infoString(tag);

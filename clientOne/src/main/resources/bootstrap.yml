@@ -6,7 +6,8 @@ spring:
   cloud:
     config:
       profile: test  #后缀
-      #uri: http://127.0.0.1:8888/ #配置服务器的地址
-      username: configService
+      uri: http://127.0.0.1:8888/ #配置服务器的地址
+
+
 
 
