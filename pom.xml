@@ -11,6 +11,7 @@
         <module>clientTwo2</module>
         <module>configService</module>
         <module>basicProject</module>
+        <module>rabbitmq</module>
     </modules>
 
     <name>cloudj174</name>

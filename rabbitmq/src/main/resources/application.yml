@@ -1,0 +1,12 @@
+#服务器的端口号
+server:
+  port: 7777
+#服务器的名字
+spring:
+  application:
+    name: rabbitmq
+  rabbitmq:
+    host: 127.0.0.1  #rabbitmq中间件的IP
+    port: 5672
+    username: admin
+    password: admin

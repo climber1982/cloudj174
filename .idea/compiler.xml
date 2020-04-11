@@ -11,6 +11,7 @@
         <module name="basicProject" />
         <module name="configService" />
         <module name="clientOne" />
+        <module name="rabbitmq" />
         <module name="clientTwo" />
       </profile>
     </annotationProcessing>
@@ -22,6 +23,7 @@
       <module name="clientTwo" options="-parameters" />
       <module name="clientTwo2" options="-parameters" />
       <module name="configService" options="-parameters" />
+      <module name="rabbitmq" options="-parameters" />
       <module name="registerS" options="-parameters" />
     </option>
   </component>
