@@ -1,10 +1,7 @@
 package com.lovo.rabbitmq.cofig;
 
-import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.*;
 
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +22,37 @@ public class MQConfig {
     //创建队列
     @Bean
     public Queue pointQueue(){
-       return new Queue("pointQueue");
+        return new Queue("pointQueue");
+    }
+    //创建队列
+    @Bean
+    public Queue topicQueueA(){
+        return new Queue("topic.queue.a");
     }
     //创建交换机
     @Bean
     public DirectExchange pointDirectExchange(){
        return  new DirectExchange("pointDirectExchange");
     }
+   @Bean
+    public  TopicExchange topicExchangeA(){
+      return new TopicExchange("topicExchangeA");
+    }
+
     //把队列与交换机进行绑定
+    @Bean
     public Binding pointQueueTopointDirectExchange(Queue pointQueue,DirectExchange pointDirectExchange){
         return BindingBuilder.bind(pointQueue).to(pointDirectExchange).with("pointKey");
     }
+   @Bean
+    public Binding  topicQueueATotopicExchangeA(Queue topicQueueA,TopicExchange topicExchangeA){
+     return  BindingBuilder.bind(topicQueueA).to(topicExchangeA).with("topic.#");
+    }
+
+
+
+
+
+
+
 }

@@ -23,4 +23,9 @@ public class SendMQ {
         rabbitTemplate.convertAndSend("pointDirectExchange","pointKey",vo);
         return "发送成功";
     }
+    @RequestMapping("sendTopic")
+    public String sendTopic(){
+        rabbitTemplate.convertAndSend("topicExchangeA","topic.hello","hello topic");
+      return "发送成功";
+    }
 }
