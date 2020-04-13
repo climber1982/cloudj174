@@ -39,6 +39,11 @@ public class MQConfig {
       return new TopicExchange("topicExchangeA");
     }
 
+   @Bean
+    public  FanoutExchange fanoutExchange(){
+        return new FanoutExchange("fanoutExchange");
+    }
+
     //把队列与交换机进行绑定
     @Bean
     public Binding pointQueueTopointDirectExchange(Queue pointQueue,DirectExchange pointDirectExchange){
@@ -49,8 +54,15 @@ public class MQConfig {
      return  BindingBuilder.bind(topicQueueA).to(topicExchangeA).with("topic.#");
     }
 
-
-
+    /*****绑定fanout****/
+   @Bean
+   public Binding fanoutExchangtoPointQueue(Queue pointQueue,FanoutExchange fanoutExchange){
+     return   BindingBuilder.bind(pointQueue).to(fanoutExchange);
+   }
+    @Bean
+    public Binding fanoutExchangtotopicQueueA(Queue topicQueueA,FanoutExchange fanoutExchange){
+        return   BindingBuilder.bind(topicQueueA).to(fanoutExchange);
+    }
 
 
 

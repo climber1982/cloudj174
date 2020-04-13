@@ -10,3 +10,14 @@ spring:
     port: 5672
     username: admin
     password: admin
+    publisher-confirms: true
+    publisher-returns: true
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual  #开启ACK
+        retry:
+          max-attempts: 5  #重试次数
+          initial-interval: 5000  #重试间隔时间
+          enabled: true  #开启消费重试
+        default-requeue-rejected: false  #重试次数超过上面的设置之后是否丢弃（false不丢弃时需要写相应代码将该消息加入死信队列
