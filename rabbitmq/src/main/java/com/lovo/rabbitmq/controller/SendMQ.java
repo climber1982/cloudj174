@@ -25,7 +25,7 @@ public class SendMQ {
                System.out.println("correlationData="+correlationData);
                System.out.println("b="+b);
                System.out.println("s="+s);
-               //写业务
+               //写业务  如果 b=true 代表数据已经放入到队列，根据correlationData 修改本地数据tag=1()
            }
        };
         //回退
@@ -49,7 +49,10 @@ public class SendMQ {
         //消息确认唯一标志，一定要保证唯一
         CorrelationData correlationData=new CorrelationData(uuid);
         System.out.println(correlationData.getId()+"/uuid="+uuid);
+        //发送消息，不一定成功
         rabbitTemplate.convertAndSend("pointDirectExchange","pointKey",str,correlationData);
+          //保存发送的消息，到本地数据库 ，本地数据设置一个tag=0 （0-预处理，1-正式数据）
+
          return "发送成功";
     }
     @RequestMapping("sendMQObject")
